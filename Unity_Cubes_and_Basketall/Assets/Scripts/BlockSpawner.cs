@@ -172,7 +172,6 @@ public class BlockSpawner : MonoBehaviour
     {
         while (i < 1)
         {
-            Debug.Log("i = " + i);
             globalRespawn = true;
             i++;
         }

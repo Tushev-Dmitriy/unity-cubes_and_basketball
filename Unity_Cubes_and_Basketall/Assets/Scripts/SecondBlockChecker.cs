@@ -63,9 +63,8 @@ public class SecondBlockCheker : MonoBehaviour
             BlockSpawner ScriptRestart = GameObject.FindObjectOfType<BlockSpawner>();
             ScriptRestart.SpawnBlocksAgain();
             score++;
-            PlayerPrefs.SetInt("Score", score);
-            PlayerPrefs.Save();
             Debug.Log(score);
+            block2_0 = false;
             block2_1 = false;
             block2_2 = false;
             block2_3 = false;
