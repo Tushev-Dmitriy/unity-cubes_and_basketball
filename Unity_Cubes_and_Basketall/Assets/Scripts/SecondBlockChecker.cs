@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SecondBlockCheker : MonoBehaviour
 {
     public string[] targetTags = { "Block2_0", "Block2_1", "Block2_2", "Block2_3" };
-    private int score = 0;
+    public int score = 0;
+    public TextScript textScript;
+    public BestScoreScript bestScoreScript;
+
+    private bool block2_0 = false;
+    private bool block2_1 = false;
+    private bool block2_2 = false;
+    private bool block2_3 = false;
 
     void Update()
     {
@@ -15,11 +23,6 @@ public class SecondBlockCheker : MonoBehaviour
 
     void TrackSecondBlockCoordinates()
     {
-        bool block2_0 = false;
-        bool block2_1 = false;
-        bool block2_2 = false;
-        bool block2_3 = false;
-
         foreach (string targetTag in targetTags)
         {
             GameObject[] blocks = GameObject.FindGameObjectsWithTag(targetTag);
@@ -62,8 +65,17 @@ public class SecondBlockCheker : MonoBehaviour
         {
             BlockSpawner ScriptRestart = GameObject.FindObjectOfType<BlockSpawner>();
             ScriptRestart.SpawnBlocksAgain();
-            score++;
-            Debug.Log(score);
+
+            textScript.IncreaseScore();
+
+            int currentScore = textScript.GetScore();
+            int bestScore = bestScoreScript.GetBestScore();
+
+            if (currentScore > bestScore)
+            {
+                bestScoreScript.UpdateBestScore(currentScore);
+            }
+
             block2_0 = false;
             block2_1 = false;
             block2_2 = false;

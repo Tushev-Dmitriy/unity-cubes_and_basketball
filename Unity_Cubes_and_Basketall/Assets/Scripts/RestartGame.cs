@@ -5,6 +5,7 @@ using UnityEngine;
 public class RestartGame : MonoBehaviour
 {
     public BlockSpawner blockSpawner;
+    public TextScript textScript;
     public void Restart_Game()
     {
         Transform canvasTransform = GameObject.Find("Canvas").transform;
@@ -12,8 +13,10 @@ public class RestartGame : MonoBehaviour
 
         BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
 
-
         GameObject gameOverObject = gameOverTransform.gameObject;
+
+        textScript.ResetScore();
+
         gameOverObject.SetActive(false);
         blockSpawner.SetBool(true);
         blockSpawner.SpawnBlocksAgain();
