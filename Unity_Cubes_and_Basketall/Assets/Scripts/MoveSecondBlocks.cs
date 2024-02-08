@@ -58,16 +58,16 @@ public class MoveSecondBlocks : MonoBehaviour
         switch (tag)
         {
             case "Block2_0":
-                targetPosition = new Vector3(-1f, 0.65f, 1f);
+                targetPosition = new Vector3(-1.1f, 0.65f, 1f);
                 break;
             case "Block2_1":
-                targetPosition = new Vector3(-1f, 0.65f, -1f);
+                targetPosition = new Vector3(-1.1f, 0.65f, -1f);
                 break;
             case "Block2_2":
-                targetPosition = new Vector3(1f, 0.65f, -1f);
+                targetPosition = new Vector3(1f, 0.65f, -0.9f);
                 break;
             case "Block2_3":
-                targetPosition = new Vector3(1f, 0.65f, 1f);
+                targetPosition = new Vector3(0.9f, 0.65f, 1f);
                 break;
         }
 

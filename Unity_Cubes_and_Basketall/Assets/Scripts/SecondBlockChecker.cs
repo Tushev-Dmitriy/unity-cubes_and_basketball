@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class SecondBlockCheker : MonoBehaviour
 {
     public string[] targetTags = { "Block2_0", "Block2_1", "Block2_2", "Block2_3" };
-    public int score = 0;
     public TextScript textScript;
     public BestScoreScript bestScoreScript;
 
@@ -57,14 +56,16 @@ public class SecondBlockCheker : MonoBehaviour
                         }
                         break;
                 }
-
             }
         }
 
         if (block2_0 && block2_1 && block2_2 && block2_3)
         {
-            BlockSpawner ScriptRestart = GameObject.FindObjectOfType<BlockSpawner>();
-            ScriptRestart.SpawnBlocksAgain();
+            BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
+            CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();
+            
+            blockSpawner.SpawnBlocksAgain();
+            coinSpawner.RestartSpawn(0.01f);
 
             textScript.IncreaseScore();
 

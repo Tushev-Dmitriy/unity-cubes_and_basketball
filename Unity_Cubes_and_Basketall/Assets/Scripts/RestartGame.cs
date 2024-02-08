@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RestartGame : MonoBehaviour
 {
-    public BlockSpawner blockSpawner;
     public TextScript textScript;
     public void Restart_Game()
     {
@@ -12,6 +11,7 @@ public class RestartGame : MonoBehaviour
         Transform gameOverTransform = canvasTransform.Find("GameOver");
 
         BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
+        CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();
 
         GameObject gameOverObject = gameOverTransform.gameObject;
 
@@ -20,6 +20,7 @@ public class RestartGame : MonoBehaviour
         gameOverObject.SetActive(false);
         blockSpawner.SetBool(true);
         blockSpawner.SpawnBlocksAgain();
+        coinSpawner.RestartSpawn(3f);
 
         Time.timeScale = 1f;
     }

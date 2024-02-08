@@ -45,6 +45,7 @@ public class BestScoreScript : MonoBehaviour
             return 0;
         }
     }
+
     public void UpdateBestScore(int currentScore)
     {
         int bestScore = GetBestScore();
@@ -55,8 +56,20 @@ public class BestScoreScript : MonoBehaviour
         }
     }
 
+    public void UpdateCoinCount(int coinCount)
+    {
+        item.CoinCount = coinCount;
+        SaveField();
+    }
+    
+    public int GetCoinCount()
+    {
+        return item.CoinCount;
+    }
+
     public class Item
     {
         public string BestScore;
+        public int CoinCount;
     }
 }

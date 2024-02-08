@@ -9,6 +9,7 @@ TagManager:
   - Block2_2
   - Block2_3
   - Block2_0
+  - Coin
   layers:
   - Default
   - TransparentFX
