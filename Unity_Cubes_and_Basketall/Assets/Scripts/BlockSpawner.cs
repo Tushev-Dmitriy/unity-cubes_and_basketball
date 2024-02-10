@@ -51,7 +51,7 @@ public class BlockSpawner : MonoBehaviour
             new Vector3(-5f, 35f, 1f), //17
             new Vector3(-5f, 35f, -1f), //18
             new Vector3(-3f, 35f, -1f), //19
-            new Vector3(-3f, 35f, 1f) //20
+            new Vector3(-3f, 35f, 1f), //20
         };
 
         secondSpawnPositionsArrays = new Vector3[][]
@@ -63,34 +63,48 @@ public class BlockSpawner : MonoBehaviour
                 new Vector3(3f, 35f, -1f), //10
                 new Vector3(5f, 35f, 1f), //12
             },
-            //new Vector3[]
-            //{
-            //    new Vector3(5f, 35f, -1f), //11
-            //    new Vector3(5f, 35f, 1f), //12
-            //    new Vector3(-1f, 35f, 5f), //13
-            //    new Vector3(-1f, 35f, 3f), //14
-            //},
-            //new Vector3[]
-            //{
-            //    new Vector3(-5f, 35f, 1f), //17
-            //    new Vector3(-5f, 35f, -1f), //18
-            //    new Vector3(-3f, 35f, -1f), //19
-            //    new Vector3(5f, 35f, 1f), //12
-            //},
-            //new Vector3[]
-            //{
-            //    new Vector3(-1f, 35f, -5f), //6
-            //    new Vector3(-1f, 35f, 5f), //13
-            //    new Vector3(5f, 35f, -1f), //11
-            //    new Vector3(5f, 35f, 1f), //12
-            //},
-            //new Vector3[]
-            //{
-            //    new Vector3(-1f, 35f, 3f), //14
-            //    new Vector3(1f, 35f, -5f), //7
-            //    new Vector3(3f, 35f, 1f), //9
-            //    new Vector3(5f, 35f, 1f), //12
-            //},
+            new Vector3[]
+            {
+                new Vector3(5f, 35f, -1f), //11
+                new Vector3(5f, 35f, 1f), //12
+                new Vector3(-1f, 35f, 5f), //13
+                new Vector3(-1f, 35f, 3f), //14
+            },
+            new Vector3[]
+            {
+                new Vector3(-1f, 35f, -5f), //6
+                new Vector3(-1f, 35f, 5f), //13
+                new Vector3(5f, 35f, -1f), //11
+                new Vector3(5f, 35f, 1f), //12
+            },
+            new Vector3[]
+            {
+                new Vector3(-1f, 35f, 3f), //14
+                new Vector3(1f, 35f, -5f), //7
+                new Vector3(3f, 35f, 1f), //9
+                new Vector3(5f, 35f, 1f), //12
+            },
+            new Vector3[]
+            {
+                new Vector3(-1f, 35f, -3f), //5
+                new Vector3(-1f, 35f, -5f), //6
+                new Vector3(-3f, 35f, 1f), //20
+                new Vector3(1f, 35f, 3f), //15
+            },
+            new Vector3[]
+            {
+                new Vector3(3f, 35f, 1f), //9
+                new Vector3(1f, 35f, 3f), //15
+                new Vector3(1f, 35f, 5f), //16
+                new Vector3(-5f, 35f, -1f), //18
+            },
+            new Vector3[]
+            {
+                new Vector3(1f, 35f, -5f), //7
+                new Vector3(1f, 35f, -3f), //8
+                new Vector3(3f, 35f, -1f), //10
+                new Vector3(-1f, 35f, 5f), //13
+            },
         };
     }
     public void SpawnBlocksAgain()
