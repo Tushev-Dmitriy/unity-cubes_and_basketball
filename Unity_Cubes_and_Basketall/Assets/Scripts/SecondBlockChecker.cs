@@ -61,12 +61,6 @@ public class SecondBlockCheker : MonoBehaviour
 
         if (block2_0 && block2_1 && block2_2 && block2_3)
         {
-            BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
-            CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();
-            
-            blockSpawner.SpawnBlocksAgain();
-            coinSpawner.RestartSpawn(0.01f);
-
             textScript.IncreaseScore();
 
             int currentScore = textScript.GetScore();
@@ -76,6 +70,18 @@ public class SecondBlockCheker : MonoBehaviour
             {
                 bestScoreScript.UpdateBestScore(currentScore);
             }
+
+            TargetScore target = GameObject.FindObjectOfType<TargetScore>();
+            if (currentScore >= target.getTarget())
+            {
+                target.CheckScore();
+            }
+
+            BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
+            CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();
+            
+            blockSpawner.SpawnBlocksAgain();
+            coinSpawner.RestartSpawn(0.01f);
 
             block2_0 = false;
             block2_1 = false;

@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class SecondBlockCollision : MonoBehaviour
 {
@@ -22,10 +18,14 @@ public class SecondBlockCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Block2_0") || collision.gameObject.CompareTag("Block2_1") ||
             collision.gameObject.CompareTag("Block2_2") || collision.gameObject.CompareTag("Block2_3"))
         {
-            Transform canvasTransform = GameObject.Find("Canvas").transform;
+            Transform canvasTransform = GameObject.Find("Canvas").transform;            
             Transform gameOverTransform = canvasTransform.Find("GameOver");
-
             GameObject gameOverObject = gameOverTransform.gameObject;
+
+            Transform timerTransform = canvasTransform.Find("TimerParts");
+            GameObject timerObject = timerTransform.gameObject;
+
+            timerObject.SetActive(false);
             gameOverObject.SetActive(true);
             Time.timeScale = 0;
         }

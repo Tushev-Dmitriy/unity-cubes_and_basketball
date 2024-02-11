@@ -5,26 +5,32 @@ using UnityEngine;
 public class RestartGame : MonoBehaviour
 {
     public TextScript textScript;
+    public Timer timer;
     public void Restart_Game()
     {
         Transform canvasTransform = GameObject.Find("Canvas").transform;
         Transform gameOverTransform = canvasTransform.Find("GameOver");
+
+        Transform winTransform = canvasTransform.Find("WinGame");
+        GameObject winObject = winTransform.gameObject;
 
         BlockSpawner blockSpawner = FindObjectOfType<BlockSpawner>();
         CoinSpawner coinSpawner = FindObjectOfType<CoinSpawner>();
 
         GameObject coinObject = GameObject.FindGameObjectWithTag("Coin");
         Destroy(coinObject);
+
+        Transform timerTransform = canvasTransform.Find("TimerParts");
+        GameObject timerCanvasObject = timerTransform.gameObject;
+
         GameObject gameOverObject = gameOverTransform.gameObject;
-        GameObject timerObject = GameObject.FindGameObjectWithTag("Timer");
-        Transform timerCanvasTransform = canvasTransform.Find("TimerParts");
-        GameObject timerCanvasObject = timerCanvasTransform.gameObject;
 
         textScript.ResetScore();
 
         gameOverObject.SetActive(false);
+        winObject.SetActive(false);
         blockSpawner.SetBool(true);
-        timerObject.SetActive(true);
+        timer.Reset();
         timerCanvasObject.SetActive(true);
         blockSpawner.SpawnBlocksAgain();
         coinSpawner.RestartSpawn(3f);
