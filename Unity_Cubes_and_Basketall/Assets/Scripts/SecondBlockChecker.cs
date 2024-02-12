@@ -74,21 +74,29 @@ public class SecondBlockCheker : MonoBehaviour
             TargetScore target = GameObject.FindObjectOfType<TargetScore>();
             if (currentScore >= target.getTarget())
             {
+                Time.timeScale = 0f;
                 target.CheckScore();
+                target.UpdateTarget();  
+
+                block2_0 = false;
+                block2_1 = false;
+                block2_2 = false;
+                block2_3 = false;
+            } else 
+            {
+                BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
+                CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();
+
+                blockSpawner.SpawnBlocksAgain();
+                coinSpawner.RestartSpawn(0.01f);
+
+                block2_0 = false;
+                block2_1 = false;
+                block2_2 = false;
+                block2_3 = false;
+
+                Time.timeScale = 1f;
             }
-
-            BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
-            CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();
-            
-            blockSpawner.SpawnBlocksAgain();
-            coinSpawner.RestartSpawn(0.01f);
-
-            block2_0 = false;
-            block2_1 = false;
-            block2_2 = false;
-            block2_3 = false;
-
-            Time.timeScale = 1f;
         }
     }
 }

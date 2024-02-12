@@ -13,17 +13,21 @@ public class TargetScore : MonoBehaviour
 
     void Start()
     {
-        getTarget();
-        UpdateTargetText();
+        UpdateTarget();
+    }
+
+    public void UpdateTarget()
+    {
+        target = Random.Range(1, 7);
+        UpdateTargetText(target);
     }
 
     public int getTarget()
     {
-        target = 2/*Random.Range(1, 7)*/;
         return target;
     }
 
-    void UpdateTargetText()
+    void UpdateTargetText(int target)
     {
         targetText.text = "Target: " + target.ToString();
     }
@@ -59,7 +63,5 @@ public class TargetScore : MonoBehaviour
 
         GameObject coinObject = GameObject.FindGameObjectWithTag("Coin");
         Destroy(coinObject);
-
-        Time.timeScale = 1;
     }
 }
