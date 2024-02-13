@@ -63,12 +63,13 @@ public class SecondBlockCheker : MonoBehaviour
         {
             textScript.IncreaseScore();
 
+            int level = bestScoreScript.GetBestScore();
             int currentScore = textScript.GetScore();
             int bestScore = bestScoreScript.GetBestScore();
 
-            if (currentScore > bestScore)
+            if (level > bestScore)
             {
-                bestScoreScript.UpdateBestScore(currentScore);
+                bestScoreScript.UpdateBestScore(level);
             }
 
             TargetScore target = GameObject.FindObjectOfType<TargetScore>();
@@ -77,6 +78,8 @@ public class SecondBlockCheker : MonoBehaviour
                 Time.timeScale = 0f;
                 target.CheckScore();
                 target.UpdateTarget();  
+
+                bestScoreScript.IncreaseLevel();
 
                 block2_0 = false;
                 block2_1 = false;

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BestScoreScript : MonoBehaviour
 {
     public Item item;
 
     private string filePath;
+    private int bestScore = 0;
 
     void Awake()
     {
@@ -32,6 +34,10 @@ public class BestScoreScript : MonoBehaviour
     {
         File.WriteAllText(filePath, JsonUtility.ToJson(item));
     }
+    public void IncreaseLevel()
+    {
+        bestScore++;
+    }
 
     public int GetBestScore()
     {
@@ -46,12 +52,12 @@ public class BestScoreScript : MonoBehaviour
         }
     }
 
-    public void UpdateBestScore(int currentScore)
+    public void UpdateBestScore(int level)
     {
         int bestScore = GetBestScore();
-        if (currentScore > bestScore)
+        if (level > bestScore)
         {
-            item.BestScore = currentScore.ToString();
+            item.BestScore = level.ToString();
             SaveField();
         }
     }

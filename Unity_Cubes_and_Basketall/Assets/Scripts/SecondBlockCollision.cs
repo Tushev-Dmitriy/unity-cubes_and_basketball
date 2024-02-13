@@ -27,7 +27,6 @@ public class SecondBlockCollision : MonoBehaviour
 
             timerObject.SetActive(false);
             gameOverObject.SetActive(true);
-            Time.timeScale = 0;
         }
         else if (collision.gameObject.CompareTag("Coin"))
         {
