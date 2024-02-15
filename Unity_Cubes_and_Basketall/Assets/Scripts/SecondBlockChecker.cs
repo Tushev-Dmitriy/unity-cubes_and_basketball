@@ -8,6 +8,7 @@ public class SecondBlockCheker : MonoBehaviour
 {
     public string[] targetTags = { "Block2_0", "Block2_1", "Block2_2", "Block2_3" };
     public TextScript textScript;
+    public LevelTextScript levelTextScript;
     public BestScoreScript bestScoreScript;
 
     private bool block2_0 = false;
@@ -63,29 +64,22 @@ public class SecondBlockCheker : MonoBehaviour
         {
             textScript.IncreaseScore();
 
-            int level = bestScoreScript.GetBestScore();
             int currentScore = textScript.GetScore();
-            int bestScore = bestScoreScript.GetBestScore();
-
-            if (level > bestScore)
-            {
-                bestScoreScript.UpdateBestScore(level);
-            }
 
             TargetScore target = GameObject.FindObjectOfType<TargetScore>();
             if (currentScore >= target.getTarget())
             {
+                levelTextScript.IncreaseLevel();
+                
                 Time.timeScale = 0f;
                 target.CheckScore();
                 target.UpdateTarget();  
-
-                bestScoreScript.IncreaseLevel();
 
                 block2_0 = false;
                 block2_1 = false;
                 block2_2 = false;
                 block2_3 = false;
-            } else 
+            } else  
             {
                 BlockSpawner blockSpawner = GameObject.FindObjectOfType<BlockSpawner>();
                 CoinSpawner coinSpawner = GameObject.FindObjectOfType<CoinSpawner>();

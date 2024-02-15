@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Magazine.unity
     guid: 265da32bd38f23141ad327e50b2fd02f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 7ca7bcdcda0abb742af4fe7afa02b328
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Basketball.unity
     guid: 457ba6f0f189ea449931e57fd59e1373
   - enabled: 1

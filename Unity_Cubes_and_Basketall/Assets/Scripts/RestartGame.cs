@@ -5,6 +5,7 @@ using UnityEngine;
 public class RestartGame : MonoBehaviour
 {
     public TextScript textScript;
+    public LevelTextScript levelTextScript;
     public Timer timer;
     public void Restart_Game()
     {
@@ -25,6 +26,10 @@ public class RestartGame : MonoBehaviour
 
         GameObject gameOverObject = gameOverTransform.gameObject;
 
+        if (gameOverObject.activeInHierarchy)
+        {
+            levelTextScript.ResetLevel();
+        }
         textScript.ResetScore();
 
         gameOverObject.SetActive(false);

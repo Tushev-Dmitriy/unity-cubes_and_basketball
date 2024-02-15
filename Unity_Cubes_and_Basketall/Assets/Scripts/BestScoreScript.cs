@@ -9,7 +9,6 @@ public class BestScoreScript : MonoBehaviour
     public Item item;
 
     private string filePath;
-    private int bestScore = 0;
 
     void Awake()
     {
@@ -34,33 +33,6 @@ public class BestScoreScript : MonoBehaviour
     {
         File.WriteAllText(filePath, JsonUtility.ToJson(item));
     }
-    public void IncreaseLevel()
-    {
-        bestScore++;
-    }
-
-    public int GetBestScore()
-    {
-        int bestScore;
-        if (int.TryParse(item.BestScore, out bestScore))
-        {
-            return bestScore;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    public void UpdateBestScore(int level)
-    {
-        int bestScore = GetBestScore();
-        if (level > bestScore)
-        {
-            item.BestScore = level.ToString();
-            SaveField();
-        }
-    }
 
     public void UpdateCoinCount(int coinCount)
     {
@@ -75,7 +47,6 @@ public class BestScoreScript : MonoBehaviour
 
     public class Item
     {
-        public string BestScore;
         public int CoinCount;
     }
 }

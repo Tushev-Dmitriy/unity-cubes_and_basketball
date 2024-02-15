@@ -18,7 +18,7 @@ public class TargetScore : MonoBehaviour
 
     public void UpdateTarget()
     {
-        target = Random.Range(1, 7);
+        target = Random.Range(1, 6);
         UpdateTargetText(target);
     }
 
