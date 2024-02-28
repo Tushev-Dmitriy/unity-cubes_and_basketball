@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SocialPlatforms.Impl;
+using System;
 
 public class BestScoreScript : MonoBehaviour
 {
@@ -40,6 +41,24 @@ public class BestScoreScript : MonoBehaviour
         SaveField();
     }
     
+    public string GetGiftTime()
+    {
+        string giftTime = item.GiftTime;
+
+        if (string.IsNullOrEmpty(giftTime))
+        {
+            return "0001-01-01 00:00:00";
+        }
+
+        return giftTime;
+    }
+
+    public void SetGiftTime()
+    {
+        item.GiftTime = DateTime.Now.ToString("yyyy-MM-dd HH:m:s");
+        SaveField();
+    }
+
     public int GetCoinCount()
     {
         return item.CoinCount;
@@ -48,5 +67,6 @@ public class BestScoreScript : MonoBehaviour
     public class Item
     {
         public int CoinCount;
+        public string GiftTime;
     }
 }
