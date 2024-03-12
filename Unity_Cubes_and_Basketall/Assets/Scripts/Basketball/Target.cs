@@ -9,6 +9,7 @@ public class Target : MonoBehaviour
     private int[] targets = new int[10] { 2, 6, 12, 18, 26, 34, 42, 52, 64, 76 };
     private int currentTarget;
     private int a = 0;
+    private int b = 0;
     private Transform canvasTransform;
     private Transform nextLevelTransform;
     private Transform bonusShotImageTransform;
@@ -26,6 +27,7 @@ public class Target : MonoBehaviour
     public LevelText levelText;
     public RestartScene restartScene;
     public RespawnBall respawnBall;
+    public Sounds sounds;
 
     private void Start()
     {
@@ -97,10 +99,21 @@ public class Target : MonoBehaviour
         SpawnBonusBasketBall();
     }
 
+    private void BonusShotSound()
+    {
+        if (nextLevelTransform.gameObject.activeSelf && b != 1)
+        {
+            sounds.BonusShotSound();
+            b++;
+        }
+
+    }
+
     private void BonusShot()
     {
         restartScene.DeleteBalls();
         nextLevelTransform.gameObject.SetActive(true);
+        BonusShotSound();
         Vector3 newPos = new Vector3(0, 1.228f, 0.299f);
         Quaternion newRotationPos = new Quaternion(9, 0, 0, 115);
         mainCam.transform.position = Vector3.MoveTowards(mainCam.transform.position, newPos, 0.003f);

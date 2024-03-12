@@ -7,6 +7,7 @@ public class TimerText : MonoBehaviour
 {
     public float Duration = 30f;
     public TMP_Text timerText;
+    public Sounds sounds;
     private bool timerStop = false;
 
     private void Update()
@@ -42,6 +43,7 @@ public class TimerText : MonoBehaviour
         Transform canvasTransform = GameObject.Find("Canvas").transform;
         Transform gameOverTransform = canvasTransform.Find("GameOverCanvas");
         gameOverTransform.gameObject.SetActive(true);
+        sounds.GameOverSound();
         Time.timeScale = 0f;
     }
 

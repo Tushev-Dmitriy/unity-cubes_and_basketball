@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -9,7 +10,6 @@ public class PlayerShooter : MonoBehaviour
     private Vector3 mousePressPosition;
     private bool isShooting;
     private GameObject selectedBasketBall;
-    public Target targetScript;
 
     void Start()
     {

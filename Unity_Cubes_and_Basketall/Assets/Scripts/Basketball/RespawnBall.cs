@@ -7,7 +7,9 @@ public class RespawnBall : MonoBehaviour
     public GameObject basketBallPrefab;
     public RandomCameraSpawn randomCameraSpawn;
     private GameObject basketBall;
+    private GameObject basketballFire;
     private Camera cameraMain;
+    public Target targetScript;
 
     private void Start()
     {
@@ -17,24 +19,39 @@ public class RespawnBall : MonoBehaviour
     public void Update()
     {
         basketBall = GameObject.FindGameObjectWithTag("BasketBall");
+        basketballFire = GameObject.FindGameObjectWithTag("BasketBallFire");
         if (basketBall != null)
         {
             if (basketBall.transform.position.y < -1)
             {
                 basketBall.tag = "BasketBallFake";
+                Destroy(basketBall, 5);
                 Vector3 pos = new Vector3(0, -0.592f, 0.863f);
                 randomCameraSpawn.RandomCamSpawn();
                 int i = randomCameraSpawn.GetRandomNumber();
                 Instantiate(basketBallPrefab, BallPosToSpawn(i), Quaternion.identity);
                 basketBallPrefab.tag = "BasketBall";
             }
-        } 
+        } else if (basketballFire != null)
+        {
+            if (basketballFire.transform.position.y < -1)
+            {
+                Destroy(basketballFire, 3);
+                targetScript.NextLevelButton();
+            }
+        }
     }
 
     public void RespawnBasketBall()
     {
         int i = randomCameraSpawn.GetRandomNumber();
         Instantiate(basketBallPrefab, BallPosToSpawn(i), Quaternion.identity);
+        basketBallPrefab.tag = "BasketBall";
+    }
+
+    public void RespawnBasketBallForReplay()
+    {
+        Instantiate(basketBallPrefab, BallPosToSpawn(4), Quaternion.identity);
         basketBallPrefab.tag = "BasketBall";
     }
 
